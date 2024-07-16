@@ -1,31 +1,34 @@
-
 import { deleteLocalStorageData } from './deleteLocalStorageData.js';
 console.log('badge.js');
 
+function updateBadgeText(state, tabId) {
+  const text = state ? 'ON' : 'OFF';
+  chrome.action.setBadgeText({ tabId: tabId, text: text });
+}
+
 chrome.runtime.onInstalled.addListener(() => {
-  chrome.action.setBadgeText({
-    text: 'OFF'
+  chrome.storage.local.set({ leetcodeAutoResetIsActive: true }, () => {
+    chrome.action.setBadgeText({ text: 'ON' });
   });
 });
 
 const leetcode = 'https://leetcode.com';
 
-chrome.action.onClicked.addListener(async (tab) => {
-  if (tab.url.startsWith(leetcode)) {
-    const prevState = await chrome.action.getBadgeText({ tabId: tab.id });
-    const nextState = prevState === 'ON' ? 'OFF' : 'ON';
+async function checkAndInjectContentScript(tabId, url) {
+  if (url.startsWith(leetcode)) {
+    const { leetcodeAutoResetIsActive } = await chrome.storage.local.get('leetcodeAutoResetIsActive');
+    if (!leetcodeAutoResetIsActive) return;
 
-    await chrome.action.setBadgeText({
-      tabId: tab.id,
-      text: nextState
+    chrome.scripting.executeScript({
+      target: { tabId: tabId },
+      files: ['content.js']
     });
+  }
+}
 
-    if (nextState === 'ON') {
-      chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ['content.js']
-      });
-    }
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === 'complete' && tab.url) {
+    checkAndInjectContentScript(tabId, tab.url);
   }
 });
 
@@ -36,5 +39,25 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       target: { tabId: sender.tab.id },
       func: deleteLocalStorageData
     });
+  }
+});
+
+async function toggleActivation(tab) {
+  const { leetcodeAutoResetIsActive } = await chrome.storage.local.get('leetcodeAutoResetIsActive');
+  const nextState = !leetcodeAutoResetIsActive;
+  await chrome.storage.local.set({ leetcodeAutoResetIsActive: nextState });
+  updateBadgeText(nextState, tab.id);
+
+  if (nextState) {
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ['content.js']
+    });
+  }
+}
+
+chrome.action.onClicked.addListener((tab) => {
+  if (tab.url.startsWith(leetcode)) {
+    toggleActivation(tab);
   }
 });
