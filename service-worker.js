@@ -1,3 +1,3 @@
-import './sw-omnibox.js';
-import './sw-tips.js';
 import './badge.js';
+
+console.log('this')

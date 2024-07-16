@@ -1,5 +1,5 @@
 
-import { deleteLocalStorageData } from './localStorageUtils.js';
+import { deleteLocalStorageData } from './deleteLocalStorageData.js';
 console.log('badge.js');
 
 chrome.runtime.onInstalled.addListener(() => {
