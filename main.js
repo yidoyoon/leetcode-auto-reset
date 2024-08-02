@@ -8,7 +8,7 @@ async function checkAndInjectContentScript(tabId, url) {
     if (!leetcodeAutoResetIsActive) return;
 
     chrome.scripting.executeScript({
-      target: { tabId: tabId },
+      target: { tabId },
       files: ['content.js']
     });
   }
@@ -20,7 +20,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   }
 });
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((request, sender) => {
   if (request.action === 'deleteLocalStorage') {
     console.log('deleteLocalStorage action received');
     chrome.scripting.executeScript({
