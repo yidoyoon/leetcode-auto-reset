@@ -15,7 +15,7 @@ importers:
         specifier: ^9.2.6
         version: 9.5.1(typescript@4.9.5)(webpack@5.92.1(webpack-cli@4.10.0))
       typescript:
-        specifier: ^4.5.5
+        specifier: ^4.9.5
         version: 4.9.5
       webpack:
         specifier: ^5.65.0
