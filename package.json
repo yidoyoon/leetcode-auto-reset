@@ -1,7 +1,7 @@
 {
   "name": "leetcode-auto-reset",
   "version": "1.0.0",
-  "description": "Automatically resets a specific key from local storage on LeetCode after solving a problem.",
+  "description": "Automatically resets solved problems on LeetCode without losing your submission logs.",
   "scripts": {
     "build": "webpack"
   },
