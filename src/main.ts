@@ -1,15 +1,15 @@
-import { deleteLocalStorageData } from './deleteLocalStorageData.js';
+import { deleteLocalStorageData } from './deleteLocalStorageData';
 
 const leetcode = 'https://leetcode.com';
 
-async function checkAndInjectContentScript(tabId, url) {
+async function checkAndInjectContentScript(tabId: number, url: string) {
   if (url.startsWith(leetcode)) {
     const { leetcodeAutoResetIsActive } = await chrome.storage.local.get('leetcodeAutoResetIsActive');
     if (!leetcodeAutoResetIsActive) return;
 
     chrome.scripting.executeScript({
       target: { tabId },
-      files: ['content.js']
+      files: ['./js/content.js']
     });
   }
 }
