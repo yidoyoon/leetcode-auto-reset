@@ -2,14 +2,25 @@
   "name": "leetcode-auto-reset",
   "version": "1.0.0",
   "description": "Automatically resets solved problems on LeetCode without losing your submission logs.",
+  "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "watch": "webpack --config webpack/webpack.dev.js --watch",
+    "build": "webpack --config webpack/webpack.prod.js",
+    "clean": "rimraf dist",
+    "style": "prettier --write \"src/**/*.{ts,tsx}\""
   },
   "devDependencies": {
     "@types/chrome": "^0.0.268",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "glob": "^11.0.0",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
     "ts-loader": "^9.2.6",
-    "typescript": "^4.5.5",
+    "typescript": "^4.9.5",
     "webpack": "^5.65.0",
-    "webpack-cli": "^4.9.1"
+    "webpack-cli": "^4.9.1",
+    "webpack-merge": "^6.0.1"
   }
 }
