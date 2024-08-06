@@ -20,16 +20,16 @@ git clone https://github.com/yidoyoon/leetcode-auto-reset.git
 pnpm install
 ```
 
-2. Build the repository using the command below.
+3. Build the repository using the command below.
 
 ```
 pnpm build
 ```
 
-3. Enable Developer Mode in Chrome extensions.
+4. Enable Developer Mode in Chrome extensions.
 
-4. Click the 'Load Unpacked' button and select the `dist` path.
+5. Click the 'Load Unpacked' button and select the `dist` path.
 
-5. With the extension loaded, to activate the auto-reset feature, click the extension button to set the icon to display 'ON'.
+6. With the extension loaded, to activate the auto-reset feature, click the extension button to set the icon to display 'ON'.
 
 From then on, the code submission records for the LeetCode problems you've already solved will be automatically erased.
