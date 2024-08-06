@@ -1,6 +1,6 @@
 # Leetcode Auto Reset
 
-If you're studying through LeetCode, there's one feature you might miss: 'Auto Code Reset'. When revisiting problems for review, your previous answers always remain. Manually resetting them each time is a hassle! This Chrome extension automates this tedious repetitive task for you.
+If you're studying through LeetCode, there's one feature you might need: 'Auto Code Reset'. When revisiting problems for review, your previous answers always remain. Manually resetting them each time is a hassle! This Chrome extension automates this tedious repetitive task for you.
 
 ## Prerequisite
 
@@ -8,28 +8,33 @@ If you're studying through LeetCode, there's one feature you might miss: 'Auto C
 
 ## Installation
 
-1. Download the repository using the command below.
+1. Clone the repository using the following command:
 
 ```
 git clone https://github.com/yidoyoon/leetcode-auto-reset.git
 ```
 
-2. Install modules using the command below.
+2. Install the required modules using the following command:
 
 ```
 pnpm install
 ```
 
-3. Build the repository using the command below.
+3. Build the project using the following command:
 
 ```
 pnpm build
 ```
 
-4. Enable Developer Mode in Chrome extensions.
+4. Enable Developer Mode in Chrome:
+- Open Chrome and navigate to chrome://extensions/.
+- Toggle the 'Developer mode' switch to ON.
 
-5. Click the 'Load Unpacked' button and select the `dist` path.
+5. Load the unpacked extension:
+- Click the 'Load unpacked' button.
+- Select the dist directory from the cloned repository.
 
-6. With the extension loaded, to activate the auto-reset feature, click the extension button to set the icon to display 'ON'.
+6. Activate the auto-reset feature:
+- With the extension loaded, click the extension button to set the icon to display 'ON'.
 
 From then on, the code submission records for the LeetCode problems you've already solved will be automatically erased.
