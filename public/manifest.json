@@ -4,11 +4,11 @@
   "description": "A program that automatically deletes the code of solved problems on LeetCode.",
   "version": "1.0.0",
   "icons": {
-    "16": "images/icon-16.png",
-    "128": "images/icon-128.png"
+    "16": "./icon-16.png",
+    "128": "./icon-128.png"
   },
   "background": {
-    "service_worker": "service_worker.js",
+    "service_worker": "./js/service_worker.js",
     "type": "module"
   },
   "minimum_chrome_version": "102",
@@ -25,13 +25,13 @@
   "content_scripts": [
     {
       "matches": ["https://leetcode.com/problems/*"],
-      "js": ["content.js"]
+      "js": ["./js/content.js"]
     }
   ],
   "action": {
     "default_icon": {
-      "16": "images/icon-16.png",
-      "128": "images/icon-128.png"
+      "16": "./icon-16.png",
+      "128": "./icon-128.png"
     }
   }
 }

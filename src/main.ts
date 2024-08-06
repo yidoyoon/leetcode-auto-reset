@@ -1,15 +1,15 @@
-import { deleteLocalStorageData } from './deleteLocalStorageData.js';
+import { deleteLocalStorageData } from './deleteLocalStorageData';
 
 const leetcode = 'https://leetcode.com';
 
-async function checkAndInjectContentScript(tabId, url) {
+async function checkAndInjectContentScript(tabId: number, url: string) {
   if (url.startsWith(leetcode)) {
     const { leetcodeAutoResetIsActive } = await chrome.storage.local.get('leetcodeAutoResetIsActive');
     if (!leetcodeAutoResetIsActive) return;
 
     chrome.scripting.executeScript({
-      target: { tabId: tabId },
-      files: ['content.js']
+      target: { tabId },
+      files: ['./js/content.js']
     });
   }
 }
@@ -20,7 +20,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   }
 });
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((request, sender) => {
   if (request.action === 'deleteLocalStorage') {
     console.log('deleteLocalStorage action received');
     chrome.scripting.executeScript({
