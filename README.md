@@ -2,6 +2,8 @@
 
 If you're studying through LeetCode, there's one feature you might need: 'Auto Code Reset'. When revisiting problems for review, your previous answers always remain. Manually resetting them each time is a hassle! This Chrome extension automates this tedious repetitive task for you.
 
+**📌 Currently, this extension performs resets only on data stored locally.**
+
 ## Prerequisite
 
 - pnpm
