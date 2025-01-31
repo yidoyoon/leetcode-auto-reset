@@ -33,7 +33,7 @@ pnpm build
 
 5. Load the unpacked extension:
 - Click the 'Load unpacked' button.
-- Select the dist directory from the cloned repository.
+- Select the `dist` directory from the cloned repository.
 
 6. Activate the auto-reset feature:
 - With the extension loaded, click the extension button to set the icon to display 'ON'.
