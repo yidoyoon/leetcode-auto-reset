@@ -17,6 +17,7 @@ git clone https://github.com/yidoyoon/leetcode-auto-reset.git
 2. Install the required modules using the following command:
 
 ```
+cd leetcode-auto-reset
 pnpm install
 ```
 
